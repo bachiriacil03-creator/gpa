@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>moy</title>
+    <title>GPA calculator</title>
 </head>
 <style>
     *{margin: 0;
@@ -23,7 +23,7 @@
         box-shadow: 10px 10px 20px rgb(0,0,0,0.31);
         height: fit-content;
         gap: 20px;
-        width: 420px;
+        width: 350px;
         display: flex;align-items: center;justify-content: space-between;flex-direction: column;
     }
 
@@ -47,14 +47,14 @@
     #con{
         height: fit-content;
         gap: 20px;
-        width: 400px;
+        width: 350px;
         display: flex;align-items: center;justify-content: space-between;flex-direction: column;
     
     }
     .zn{
         display: flex;flex-direction: column;gap: 5px;
     }
-    .ct{display: flex;align-items: center;width: 380px; justify-content: space-around;
+    .ct{display: flex;align-items: center;width: 300px; justify-content: space-around;
     }
     #bl{
         z-index: 2;
@@ -87,7 +87,7 @@
         <div id="ctr"> <div id="add" onclick="add()">add </div>  <div id="clc" onclick="clc()"> calculate</div> </div>
     </div>
     <div id="bl" onclick="show()">
-        <div id="res">your result is <div id="val">15</div></div>
+        <div id="res"></div>
     </div>
 </body>
 <script>
@@ -101,7 +101,7 @@ function add() {
     zone.innerHTML=`
             <h3> module ${n} </h3>
             <div class="ct">
-                exam <input id="e${n}"  type="number"> coefficient <input id="c${n}" type="number"> td <input id="t${n}" type="number" >
+                <input id="e${n}" placeholder="exam " type="number">  <input id="c${n}" placeholder="coefficient" type="number"> <input id="t${n}" placeholder="TD" type="number" >
             </div>`
     con.appendChild(zone)
     n+=1
@@ -136,7 +136,7 @@ function clc() {
 }
 function show(x){
     if (re) {
-        document.getElementById("val").innerHTML=x
+        document.getElementById("res").innerHTML=`your result is <div style="color:${x>=10?"green":"red"} ;">${ parseInt(x*100)/100  }</div> `
         document.getElementById("bl").style.display="flex"
     }else{
         document.getElementById("bl").style.display="none"
