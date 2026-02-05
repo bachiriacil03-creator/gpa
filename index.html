@@ -90,7 +90,7 @@
        <div id="con"></div>
         <div id="ctr"> <div id="add" onclick="add()">add </div>  <div id="clc" onclick="clc()"> calculate</div> </div>
     </div>
-    <div id="bl" onclick="show()">
+    <div id="bl" onclick="show(0)">
         <div id="res"></div>
     </div>
 </body>
@@ -139,10 +139,12 @@ function clc() {
     show(sum/cof)
 }
 function show(x){
-    if (!isNaN(x)) {
-        if (re) {
+    if (!isNaN(x)) {    
+    if (re) {
+            
             document.getElementById("res").innerHTML=`your result is <div style="color:${x>=10?"green":"red"} ;">${ parseInt(x*100)/100  }</div> `
             document.getElementById("bl").style.display="flex"
+            
         }else{
             document.getElementById("bl").style.display="none"
         }
