@@ -32,11 +32,14 @@
         display: flex;align-items: center;justify-content: center;gap: 18px;
     }
     #add,#clc{
-        background: red;
+        background: green;
         padding: 10px 20px;
         border-radius: 20px;
         cursor: pointer;
         color: white;text-transform: uppercase;font-weight: 600;
+    }
+    #add{
+        background: red;
     }
     input{
         height: 30px;width: 70px;border: none;outline: none;box-shadow: 5px 5px 10px inset rgb(0,0,0,0.31);
@@ -82,7 +85,7 @@
 </style>
 <body>
     <div id="container">
-        <h1>modules</h1>
+        <h1>Modules</h1>
        <div id="con"></div>
         <div id="ctr"> <div id="add" onclick="add()">add </div>  <div id="clc" onclick="clc()"> calculate</div> </div>
     </div>
