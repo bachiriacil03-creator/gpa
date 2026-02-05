@@ -138,13 +138,15 @@ function clc() {
     show(sum/cof)
 }
 function show(x){
-    if (re) {
-        document.getElementById("res").innerHTML=`your result is <div style="color:${x>=10?"green":"red"} ;">${ parseInt(x*100)/100  }</div> `
-        document.getElementById("bl").style.display="flex"
-    }else{
-        document.getElementById("bl").style.display="none"
+    if (!isNaN(x)) {
+        if (re) {
+            document.getElementById("res").innerHTML=`your result is <div style="color:${x>=10?"green":"red"} ;">${ parseInt(x*100)/100  }</div> `
+            document.getElementById("bl").style.display="flex"
+        }else{
+            document.getElementById("bl").style.display="none"
+        }
+        re = !re
     }
-    re = !re
     
 }
 
