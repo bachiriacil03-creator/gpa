@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moy</title>
+</head>
+<style>
+    *{margin: 0;
+    font-family: sans-serif;box-sizing: border-box;
+    }
+    body{
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;justify-content: center;
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
+    #container{
+        padding: 20px 0;
+        border-radius: 20px;
+        box-shadow: 10px 10px 20px rgb(0,0,0,0.31);
+        height: fit-content;
+        gap: 20px;
+        width: 420px;
+        display: flex;align-items: center;justify-content: space-between;flex-direction: column;
+    }
+
+    #ctr{
+        height: fit-content;
+        display: flex;align-items: center;justify-content: center;gap: 18px;
+    }
+    #add,#clc{
+        background: red;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        color: white;text-transform: uppercase;font-weight: 600;
+    }
+    input{
+        height: 30px;width: 70px;border: none;outline: none;box-shadow: 5px 5px 10px inset rgb(0,0,0,0.31);
+        border-radius: 20px;display: flex;align-items: center;justify-content: center;
+        padding:0 0 0 15px ;
+        font-size: 14px;
+    }
+    #con{
+        height: fit-content;
+        gap: 20px;
+        width: 400px;
+        display: flex;align-items: center;justify-content: space-between;flex-direction: column;
+    
+    }
+    .zn{
+        display: flex;flex-direction: column;gap: 5px;
+    }
+    .ct{display: flex;align-items: center;width: 380px; justify-content: space-around;
+    }
+    #bl{
+        z-index: 2;
+        backdrop-filter: blur(10px);
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        display: none;justify-content: center;
+        top: 0;
+        position: fixed;
+    }
+    #res{
+        display: flex;
+        gap: 10px;
+        margin-top: 50px;
+        height: fit-content;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 20px;
+        font-family: sans-serif;
+        font-weight: 600;
+        background: white;
+        box-shadow: 5px 5px 10px rgb(0,0,0,0.31);
+    }
+</style>
+<body>
+    <div id="container">
+        <h1>modules</h1>
+       <div id="con"></div>
+        <div id="ctr"> <div id="add" onclick="add()">add </div>  <div id="clc" onclick="clc()"> calculate</div> </div>
+    </div>
+    <div id="bl" onclick="show()">
+        <div id="res">your result is <div id="val">15</div></div>
+    </div>
+</body>
+<script>
+
+let n=1
+re=true
+function add() {
+    let con=document.getElementById('con')
+    let zone=document.createElement("div")
+    zone.className="zn"
+    zone.innerHTML=`
+            <h3> module ${n} </h3>
+            <div class="ct">
+                exam <input id="e${n}"  type="number"> coefficient <input id="c${n}" type="number"> td <input id="t${n}" type="number" >
+            </div>`
+    con.appendChild(zone)
+    n+=1
+}
+function clc() {
+    let sum=0
+    let cof=0
+    for (let i = 1; i < n; i++) {
+        let ex=document.getElementById("e"+i).value
+        let co=document.getElementById("c"+i).value
+        if (ex=="" || co=="" ) {continue}
+        let td=document.getElementById("t"+i).value
+        
+        co=parseFloat(co)
+        ex=parseFloat(ex)
+        td=parseFloat(td)
+        console.log(td);
+        let em 
+        
+        if ( !isNaN(td) ) {
+            em=(ex*2 + td)/3 * co
+        }else{
+            em=ex*co
+        }
+          
+        sum+= em 
+        cof+= co
+        
+        
+    }
+    show(sum/cof)
+}
+function show(x){
+    if (re) {
+        document.getElementById("val").innerHTML=x
+        document.getElementById("bl").style.display="flex"
+    }else{
+        document.getElementById("bl").style.display="none"
+    }
+    re = !re
+    
+}
+
+add()
+</script>
+</html>
